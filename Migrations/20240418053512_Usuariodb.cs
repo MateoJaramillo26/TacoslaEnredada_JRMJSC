@@ -5,7 +5,7 @@
 namespace TacoslaEnredada_JRMJSC.Migrations
 {
     /// <inheritdoc />
-    public partial class PrimeraDbb : Migration
+    public partial class Usuariodb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,10 @@ namespace TacoslaEnredada_JRMJSC.Migrations
                 {
                     UsuarioID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    correo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    cedula = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cedula = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Clave = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

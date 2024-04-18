@@ -5,15 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TacoslaEnredada_JRMJSC.Models;
 
-namespace TacoslaEnredada_JRMJSC.Data
-{
-    public class TacoslaEnredada_JRMJSCContext : DbContext
+    public class UsuarioDb : DbContext
     {
-        public TacoslaEnredada_JRMJSCContext (DbContextOptions<TacoslaEnredada_JRMJSCContext> options)
+        public UsuarioDb (DbContextOptions<UsuarioDb> options)
             : base(options)
         {
         }
 
         public DbSet<TacoslaEnredada_JRMJSC.Models.Usuario> Usuario { get; set; } = default!;
     }
-}

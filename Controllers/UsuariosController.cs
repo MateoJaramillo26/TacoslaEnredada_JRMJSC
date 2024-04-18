@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TacoslaEnredada_JRMJSC.Data;
 using TacoslaEnredada_JRMJSC.Models;
 
 namespace TacoslaEnredada_JRMJSC.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly TacoslaEnredada_JRMJSCContext _context;
+        private readonly UsuarioDb _context;
 
-        public UsuariosController(TacoslaEnredada_JRMJSCContext context)
+        public UsuariosController(UsuarioDb context)
         {
             _context = context;
         }
@@ -54,7 +53,7 @@ namespace TacoslaEnredada_JRMJSC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioID,nombre,correo,cedula")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioID,Nombre,Correo,Cedula,Clave")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +85,7 @@ namespace TacoslaEnredada_JRMJSC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioID,nombre,correo,cedula")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioID,Nombre,Correo,Cedula,Clave")] Usuario usuario)
         {
             if (id != usuario.UsuarioID)
             {

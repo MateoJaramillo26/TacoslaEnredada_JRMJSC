@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using TacoslaEnredada_JRMJSC.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TacoslaEnredada_JRMJSCContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TacoslaEnredada_JRMJSCContext") ?? throw new InvalidOperationException("Connection string 'TacoslaEnredada_JRMJSCContext' not found.")));
+builder.Services.AddDbContext<UsuarioDb>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UsuarioDb") ?? throw new InvalidOperationException("Connection string 'UsuarioDb' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -4,15 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TacoslaEnredada_JRMJSC.Data;
 
 #nullable disable
 
 namespace TacoslaEnredada_JRMJSC.Migrations
 {
-    [DbContext(typeof(TacoslaEnredada_JRMJSCContext))]
-    [Migration("20240417191429_PrimeraDbb")]
-    partial class PrimeraDbb
+    [DbContext(typeof(UsuarioDb))]
+    [Migration("20240418053512_Usuariodb")]
+    partial class Usuariodb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,13 +31,17 @@ namespace TacoslaEnredada_JRMJSC.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioID"));
 
-                    b.Property<string>("cedula")
+                    b.Property<string>("Cedula")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("correo")
+                    b.Property<string>("Clave")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Correo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TacoslaEnredada_JRMJSC.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<UsuarioDb>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("UsuarioDb") ?? throw new InvalidOperationException("Connection string 'UsuarioDb' not found.")));
+
+//Permitir que los demas controladores puedan utilizara tributos de login de usuarios
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

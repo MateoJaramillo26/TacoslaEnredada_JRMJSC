@@ -1,0 +1,33 @@
+﻿@model TacoslaEnredada_JRMJSC.Models.Usuario
+@{
+    Layout = null;
+}
+
+<h1>Unete a la familia Tacos la Enredada</h1>
+
+<!Doctype html>
+
+<html>
+    <head>
+        <meta name="Registro" content="widht=device-width" />
+        <title>Registro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-5 pt-5">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card"
+                    Registrate
+                    
+            </div>
+            <div class="card-body">
+                <form asp-controller="Login" asp-action="Registro" method="post" enctype="multipart/form-data">
+                    <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="Nombre" required />
+                    <input class=""
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

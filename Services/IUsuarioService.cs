@@ -6,5 +6,7 @@ namespace TacoslaEnredada_JRMJSC.Services
     {
         Task<Usuario> GetUsuario(string correo, string clave);
         Task<Usuario> SetUsuario (Usuario usuario);
+
+        Task<Usuario> GetUsuarioByEmailorCedula(string email, string cedula);
     }
 }

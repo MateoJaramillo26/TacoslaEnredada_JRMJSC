@@ -2,7 +2,63 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Tacos la Enredada</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    /* Custom CSS for a Mexican food theme */
+    .navbar, .footer {
+        background-color: #007BFF; /* Vibrant blue, change as desired */
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #DC3545; /* Vibrant red for primary buttons */
+        border-color: #DC3545;
+    }
+
+    .btn-secondary {
+        background-color: #FFC107; /* Bright yellow for secondary buttons */
+        border-color: #FFC107;
+    }
+
+    .card-header, .card-footer {
+        background-color: #28A745; /* Green, typical in Mexican color palettes */
+        color: white;
+    }
+
+    .card-body {
+        background-color: #F8F9FA; /* Light gray background for card bodies */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-right my-2">
+            <!-- Updated button placement and styling -->
+            <a href="@Url.Action("IniciarSesion", "Login")" class="btn btn-primary">Iniciar Sesión</a>
+            <!-- Link to the registration page -->
+            <a href="@Url.Action("Registro", "Login")" class="btn btn-secondary">Regístrate</a>
+        </div>
+    </div>
+    <div class="text-center">
+        <h1 class="display-4">Tacos la Enredada</h1>
+        <p>Explore our delicious Mexican dishes.</p>
+    </div>
+
+    <!-- Product display area -->
+    <div class="row">
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">Product Name</div>
+                    <img class="card-img-top" src="https://via.placeholder.com/150" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Title</h5>
+                        <p class="card-text">Description of the product goes here. It's tasty and perfect for your meals!</p>
+                        <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                    <div class="card-footer text-muted">Price: $XX.XX</div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

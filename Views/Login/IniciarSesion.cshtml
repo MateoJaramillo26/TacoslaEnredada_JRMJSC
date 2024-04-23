@@ -1,0 +1,53 @@
+﻿@model TacoslaEnredada_JRMJSC.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Iniciar Sesión</title>
+    <!-- Corrected the path to Bootstrap CSS file -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Added container class for proper alignment and padding -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <!-- Closed the card-header div properly -->
+                    <div class="card-header">
+                        Iniciar Sesión
+                    </div>
+                    <div class="card-body">
+                        <!-- Corrected asp-controller attribute and fixed some attribute typos -->
+                        <form asp-controller="Login" asp-action="IniciarSesion" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Correo" required name="correo" />
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" required name="clave" />
+                            <div class="d-grid gap-2 mb-3">
+                                <!-- Closed the button tag properly -->
+                                <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="form-group">
+                                    <!-- Corrected class name from 'alet' to 'alert' -->
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            <!-- Fixed the quotation marks for Url.Action and the text for the link -->
+                            ¿No tienes una cuenta? <a href="@Url.Action("Registro", "Login")">Regístrate aquí</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

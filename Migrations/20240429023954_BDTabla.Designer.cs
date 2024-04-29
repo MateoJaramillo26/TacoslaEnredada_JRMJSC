@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TacoslaEnredada_JRMJSC.Migrations
 {
     [DbContext(typeof(UsuarioDb))]
-    partial class UsuarioDbModelSnapshot : ModelSnapshot
+    [Migration("20240429023954_BDTabla")]
+    partial class BDTabla
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace TacoslaEnredada_JRMJSC.Migrations
 
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("RutaImagen")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

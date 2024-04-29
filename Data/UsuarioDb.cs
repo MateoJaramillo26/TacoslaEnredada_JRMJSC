@@ -13,4 +13,6 @@ using TacoslaEnredada_JRMJSC.Models;
         }
 
         public DbSet<TacoslaEnredada_JRMJSC.Models.Usuario> Usuario { get; set; } = default!;
+
+public DbSet<TacoslaEnredada_JRMJSC.Models.Productos> Productos { get; set; } = default!;
     }

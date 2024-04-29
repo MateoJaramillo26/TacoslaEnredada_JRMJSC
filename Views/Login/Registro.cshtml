@@ -26,6 +26,7 @@
                         <input class="form-control mb-3" type="text" placeholder="Correo Electrónico" asp-for="Correo" required />
                         <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Clave" required />
                         <input class="form-control mb-3" type="text" placeholder="Cedula de Identidad" asp-for="Cedula" required />
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
                         <div class="d-grid gap-2 mb-3">
                             <button class="btn btn-primary" type="submit">Regístrate</button>
                         </div>

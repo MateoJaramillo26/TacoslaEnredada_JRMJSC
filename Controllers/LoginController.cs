@@ -25,21 +25,29 @@ namespace TacoslaEnredada_JRMJSC.Controllers
         [HttpPost]
         public async Task<IActionResult> Registro(Usuario usuario)
         {
+            // Verificar si el modelo es válido según las anotaciones de validación
+            if (!ModelState.IsValid)
+            {
+                // Si el modelo no es válido, volver a mostrar la vista de registro con los mensajes de error
+                return View(usuario);
+            }
+
+            // Si el modelo es válido, continuar con la lógica de registro
+
             // Encrypt the password first
             usuario.Clave = Utilidades.EncriptarClave(usuario.Clave);
 
-            // Try to find an existing user by email or cedula
-            Usuario usuarioExistente = await _usuarioService.GetUsuario(usuario.Correo, usuario.Cedula);
-
             // Check if the user already exists by email
-            if (usuarioExistente != null && usuarioExistente.Correo == usuario.Correo)
+            Usuario usuarioExistenteCorreo = await _usuarioService.GetUsuarioByEmail(usuario.Correo);
+            if (usuarioExistenteCorreo != null)
             {
                 ViewData["Mensaje"] = "Ya existe un usuario con el mismo correo electrónico.";
                 return View(usuario); // Return the same view with an error message
             }
 
             // Check if the user already exists by cedula
-            else if (usuarioExistente != null && usuarioExistente.Cedula == usuario.Cedula)
+            Usuario usuarioExistenteCedula = await _usuarioService.GetUsuarioByCedula(usuario.Cedula);
+            if (usuarioExistenteCedula != null)
             {
                 ViewData["Mensaje"] = "Ya existe un usuario con la misma cédula.";
                 return View(usuario); // Return the same view with an error message
@@ -56,6 +64,7 @@ namespace TacoslaEnredada_JRMJSC.Controllers
             ViewData["Mensaje"] = "No se pudo crear el usuario. Intente nuevamente.";
             return View(usuario);
         }
+
 
 
 

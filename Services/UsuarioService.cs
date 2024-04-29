@@ -21,6 +21,16 @@ namespace TacoslaEnredada_JRMJSC.Services
                 .FirstOrDefaultAsync();
         }
 
+        public Task<Usuario> GetUsuarioByCedula(string cedula)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Usuario> GetUsuarioByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Usuario> GetUsuarioByEmailorCedula(string email, string cedula)
         {
             return await _context.Usuario

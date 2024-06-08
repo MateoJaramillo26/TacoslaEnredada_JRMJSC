@@ -153,5 +153,26 @@ namespace TacoslaEnredada_JRMJSC.Controllers
             return _context.Productos.Any(e => e.Id == id);
         }
 
+        // GET: Tacos
+        public async Task<IActionResult> SecondIndex()
+        {
+            var productos = await _context.Productos.ToListAsync();
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            // Ensure that RutaImagen is not null and is a string
+            var imagenes = productos.Select(p => p.RutaImagen)
+                                    .Where(rp => rp != null && rp is string)
+                                    .Cast<string>()
+                                    .ToList();
+
+            ViewBag.ImagenesProductos = imagenes;
+
+            return View(productos);
+        }
+
     }
 }

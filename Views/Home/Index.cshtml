@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
+    var imagenesProductos = ViewBag.ImagenesProductos as List<string>;
 }
+
 
 <style>
     /* Custom CSS for a Mexican food theme */
@@ -44,21 +47,40 @@
     </div>
 
     <!-- Product display area -->
-    <div class="row">
-        @for (int i = 0; i < 3; i++)
-        {
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header">Product Name</div>
-                    <img class="card-img-top" src="https://www.pequerecetas.com/wp-content/uploads/2020/10/tacos-mexicanos.jpg" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">Description of the product goes here. It's tasty and perfect for your meals!</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                    <div class="card-footer text-muted">Price: $XX.XX</div>
-                </div>
-            </div>
-        }
-    </div>
+   
 </div>
+
+<h1>Productos</h1>
+
+foreach (var item in Model.Select((producto, index) => new { Producto = producto, Index = index }))
+{
+    <tr>
+        <td>
+            Html.DisplayFor(modelItem => item.Producto.Nombre)
+        </td>
+        <td>
+            Html.DisplayFor(modelItem => item.Producto.Descripcion)
+        </td>
+        <td>
+            Html.DisplayFor(modelItem => item.Producto.Precio)
+        </td>
+        <td>
+            Html.DisplayFor(modelItem => item.Producto.Ingredientes)
+        </td>
+        <td>
+            if (imagenesProductos != null && item.Index < imagenesProductos.Count)
+            {
+                <img src="imagenesProductos[item.Index]" alt="Product Image">
+            }
+            else
+            {
+                <span>No Image</span>
+            }
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="item.Producto.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="item.Producto.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="item.Producto.Id">Delete</a>
+        </td>
+    </tr>
+}
